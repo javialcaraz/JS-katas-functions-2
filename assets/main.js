@@ -10,7 +10,7 @@ function multiply(a, b) {
 
     let answer = a
     for (var i = 0; i < b - 1; i++) {
-        answer += a
+        answer = add(a, answer)
     }
     return answer
 }
@@ -21,34 +21,38 @@ console.log(multiply(4, 3));
 function power(x, n) {
     let answer = x
     for (var i = 0; i < n - 1; i++) {
-        answer *= x
+        answer = multiply(x, answer)
     }
     return answer
 }
-console.log(power(3, 3));
+console.log(power(2, 4));
 
 
 //KATA4 FACTORIAL
+
 function factorial(num) {
+    let answer = num
     if (num === 0 || num === 1)
         return 1;
-    for (var i = num - 1; i >= 1; i--) {
-        num *= i;
+    for (var i = num - 1; i - 1; i--) {
+        answer = multiply(answer, i)
     }
-    return num;
+    return answer
 }
-console.log(factorial(4));
+console.log(factorial(5));
 
 
 //BONUS FIBONACCI
 function fibonacci(n) {
-    let arr = [0, 1];
-    for (let i = 2; i < n + 1; i++) {
-        arr.push(arr[i - 2] + arr[i - 1])
+    var a = 0, b = 1, f = 1;
+    for (var i = 3; i <= n; i++) {
+        f = add(a, b)
+        a = b;
+        b = f;
     }
-    return arr[n]
+    return f;
 }
-console.log(fibonacci(4));
+console.log(fibonacci(8));
 
 
 
